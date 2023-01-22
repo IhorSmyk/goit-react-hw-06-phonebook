@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
-
 import { useDispatch, useSelector } from 'react-redux';
-import s from './ContactForm.module.css';
 import { addContact } from 'redux/contacts/contacts.slice';
+import { Notify } from 'notiflix';
+import s from './ContactForm.module.css';
 
-export const ContactForm = ({ sendData }) => {
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ export const ContactForm = ({ sendData }) => {
       ({ name: currentName }) =>
         currentName.toLowerCase() === name.toLowerCase()
     )
-      ? alert(`a contact with the name ${name} already exists`)
+      ? Notify.info(`a contact with the name ${name} already exists`)
       : dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
@@ -68,8 +67,4 @@ export const ContactForm = ({ sendData }) => {
       </form>
     </>
   );
-};
-
-ContactForm.propTypes = {
-  sendData: PropTypes.func.isRequired,
 };

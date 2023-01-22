@@ -3,8 +3,6 @@ import { initialContacts } from 'data/initialContacts';
 import { ContactForm } from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactTable from './ContactTable/ContactTable';
-import { nanoid } from 'nanoid';
-
 const LOCAL_KEY = 'contacts';
 
 export const App = () => {
