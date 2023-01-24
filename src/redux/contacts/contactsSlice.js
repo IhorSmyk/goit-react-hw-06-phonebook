@@ -21,22 +21,3 @@ const contactSlice = createSlice({
 
 export const { addContact, deleteContact } = contactSlice.actions;
 export default contactSlice.reducer;
-
-// const handleDeleteContact = idToDelete =>
-//   setContacts(contacts.filter(contact => contact.id !== idToDelete));
-
-// reducers: {
-//     addTask: {
-//       reducer(state, action) {
-//         state.push(action.payload);
-//       },
-//       prepare(text) {
-//         return {
-//           payload: {
-//             text,
-//             id: nanoid(),
-//             completed: false,
-//           },
-//         };
-//       },
-//     },
