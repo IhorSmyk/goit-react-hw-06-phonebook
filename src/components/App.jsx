@@ -1,7 +1,7 @@
 // import { useState, useEffect } from 'react';
 // import { initialContacts } from 'data/initialContacts';
 import { ContactForm } from './ContactForm/ContactForm';
-import Filter from './Filter/Filter';
+import Filter from './Filter/Filter'; 
 import ContactTable from './ContactTable/ContactTable';
 // const LOCAL_KEY = 'contacts';
 

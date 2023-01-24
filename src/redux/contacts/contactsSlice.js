@@ -14,13 +14,13 @@ const contactSlice = createSlice({
       },
     },
     deleteContact: (state, action) => {
-      state.contacts = state.contacts.filter(el => el.id !== action.payload);
+      state.items = state.items.filter(el => el.id !== action.payload);
     },
   },
 });
 
 export const { addContact, deleteContact } = contactSlice.actions;
-export const contactsReducer = contactSlice.reducer;
+export default contactSlice.reducer;
 
 // const handleDeleteContact = idToDelete =>
 //   setContacts(contacts.filter(contact => contact.id !== idToDelete));

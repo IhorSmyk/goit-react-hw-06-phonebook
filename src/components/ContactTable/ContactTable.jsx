@@ -1,9 +1,16 @@
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'redux/contacts/contactsSlice';
 import s from './ContactTable.module.css';
 
-const ContactTable = ({ onDeleteContact }) => {
+const ContactTable = () => {
   const contacts = useSelector(state => state.contacts.items);
+  const filter = useSelector(state => state.filter.filter);
+  const dispatch = useDispatch();
+
+  const filteredContacts = contacts.filter(({ name }) =>
+    name.toLowerCase().includes(filter)
+  );
+
   return (
     <>
       {contacts.length === 0 ? (
@@ -18,13 +25,15 @@ const ContactTable = ({ onDeleteContact }) => {
             </tr>
           </thead>
           <tbody className={s.tbody}>
-            {contacts.map(({ id, name, number }) => {
+            {filteredContacts?.map(({ id, name, number }) => {
               return (
                 <tr key={id}>
                   <td>{name} </td>
                   <td>{number}</td>
                   <td>
-                    <button onClick={() => onDeleteContact(id)}>delete</button>
+                    <button onClick={() => dispatch(deleteContact(id))}>
+                      delete
+                    </button>
                   </td>
                 </tr>
               );
@@ -34,17 +43,6 @@ const ContactTable = ({ onDeleteContact }) => {
       )}
     </>
   );
-};
-
-ContactTable.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactTable;
