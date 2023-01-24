@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import s from './ContactTable.module.css';
 import { useSelector } from 'react-redux';
+import s from './ContactTable.module.css';
 
 const ContactTable = ({ onDeleteContact }) => {
   const contacts = useSelector(state => state.contacts.items);

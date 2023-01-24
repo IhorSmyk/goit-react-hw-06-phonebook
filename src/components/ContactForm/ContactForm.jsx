@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contacts/contacts.slice';
+import { addContact } from 'redux/contacts/contactsSlice';
 import { Notify } from 'notiflix';
 import s from './ContactForm.module.css';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.items);
+  const dispatch = useDispatch();
 
   const handleChangeData = e => {
     switch (e.target.name) {
